@@ -9,7 +9,7 @@
     <form action="{% url 'cursos.form' %}" method="post">
         {% csrf_token %}
         <div>
-            <div style="color: red">
+            <div id="oi" style="color: red">
                 {{ erros.nome }}
             </div>
             Nome:<input type="text" name="nome" value="{{ curso.nome }}"/>
@@ -18,7 +18,7 @@
             Imagem:<input type="text" name="imagem" value="{{ curso.imagem }}" />
         </div>
         <div>
-            Descrição: <textarea rows="6" name="descricao">{{curso.descricao}}"</textarea>
+            Descrição: <textarea rows="6" name="descricao">{{curso.descricao}}</textarea>
         </div>
         <div>
             Autor:
