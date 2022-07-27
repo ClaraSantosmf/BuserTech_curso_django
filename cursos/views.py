@@ -95,7 +95,7 @@ def cursos_form(request):
     if request.method == 'POST':
         nome_post = request.POST.get('nome')
         descricao_post = request.POST.get('descricao')
-        imagem_post = request.POST.get('imagem')
+        imagem_post = request.POST.get('imagem', '')
         ativo_post = request.POST.get('ativo', 'false').lower() == 'true'
         autor_id = int(request.POST.get('author'))
         curso_objeto = Curso(
@@ -106,12 +106,16 @@ def cursos_form(request):
             autor_id=autor_id
 
         )
+        erros = {}
         try:
+            if len(imagem_post) == 0:
+                erros['imagem'] = 'Campo imagem é obrigatório'
+                raise IntegrityError()
             curso_objeto.save()
         except IntegrityError:
             autores = Autor.objects.order_by('nome').all()
             contexto = {'autores': autores}
-            erros={'nome': 'Nome de curso duplicado, escolha outro'}
+            erros['nome'] = 'Nome de curso duplicado, escolha outro'
             contexto ={
                 'autores': autores,
                 'erros': erros,

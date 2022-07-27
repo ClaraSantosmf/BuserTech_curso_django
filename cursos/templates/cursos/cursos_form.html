@@ -17,6 +17,9 @@
         <div>
             Imagem:<input type="text" name="imagem" value="{{ curso.imagem }}" />
         </div>
+        <div style="color: red">
+                {{ erros.imagem }}
+        </div>
         <div>
             Descrição: <textarea rows="6" name="descricao">{{curso.descricao}}</textarea>
         </div>
