@@ -1,0 +1,6 @@
+-r requirements.txt
+
+django-debug-toolbar
+flake8
+pip-tools
+pytest-django

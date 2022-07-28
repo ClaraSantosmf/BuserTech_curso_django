@@ -2,7 +2,7 @@ from django.shortcuts import reverse, render, get_object_or_404, redirect
 from django.contrib import messages
 from django.db.utils import IntegrityError
 from django.views.generic.edit import CreateView, UpdateView
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 
 from cursos.forms import CursoModelForm
 from cursos.models import Curso, CursoLikes, Autor
@@ -62,7 +62,7 @@ def like_no_curso(request, pk):
         CursoLikes.objects.create(user=user, curso=curso)
         messages.success(request, f'{curso.autor} agradece seu LIKE!')
 
-    except IntegrityError as erro:
+    except IntegrityError:
         # SOLUCAO 1
         # messages.error(request, f'Ops! você já deu like no {curso.nome}!')
         CursoLikes.objects.get(user=user, curso=curso).delete()
