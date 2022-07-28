@@ -66,7 +66,7 @@ def like_no_curso(request, pk):
         # SOLUCAO 1
         # messages.error(request, f'Ops! você já deu like no {curso.nome}!')
         CursoLikes.objects.get(user=user, curso=curso).delete()
-        messages.success(request, f'Like removido!')
+        messages.success(request, f'{"Like removido!"}')
 
     # SOLUCAO 1
     # return render(request, 'cursos/like_complete.html')
@@ -81,7 +81,7 @@ def api_like_no_curso(request, pk):
             'like': True,
         }
 
-    except IntegrityError as error:
+    except IntegrityError:
         CursoLikes.objects.get(user=request.user, curso=curso).delete()
         resposta = {
             'like': False,
@@ -116,7 +116,7 @@ def cursos_form(request):
             autores = Autor.objects.order_by('nome').all()
             contexto = {'autores': autores}
             erros['nome'] = 'Nome de curso duplicado, escolha outro'
-            contexto ={
+            contexto = {
                 'autores': autores,
                 'erros': erros,
                 'curso': curso_objeto

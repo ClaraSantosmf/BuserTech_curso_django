@@ -18,7 +18,8 @@ class Migration(migrations.Migration):
                 ('nome', models.CharField(max_length=128, unique=True)),
                 ('slug', models.SlugField(blank=True, max_length=256, null=True, unique=True)),
                 ('descricao', models.TextField(blank=True, null=True)),
-                ('curso', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='aulas', to='cursos.curso')),
+                ('curso', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='aulas',
+                                            to='cursos.curso')),
             ],
         ),
     ]

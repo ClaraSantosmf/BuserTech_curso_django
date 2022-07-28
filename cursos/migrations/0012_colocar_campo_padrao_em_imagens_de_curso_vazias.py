@@ -2,11 +2,14 @@
 
 from django.db import migrations
 
+
 def atribuir_valor_padrao(apps, schema_editor):
+
     Curso = apps.get_model('cursos', 'Curso')
     for curso in Curso.objects.filter(imagem=''):
-        curso.imagem= 'https://eucontador.com.br/wp-content/uploads/2019/10/Cursos-Online.png'
+        curso.imagem = 'https://eucontador.com.br/wp-content/uploads/2019/10/Cursos-Online.png'
         curso.save()
+
 
 class Migration(migrations.Migration):
 

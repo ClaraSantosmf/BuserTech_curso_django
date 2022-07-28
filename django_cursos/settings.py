@@ -71,7 +71,7 @@ MIDDLEWARE = [
 
 # isto é do debug_toolbar
 if DEBUG:
-    MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware",]
+    MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
 
 ROOT_URLCONF = 'django_cursos.urls'
 
